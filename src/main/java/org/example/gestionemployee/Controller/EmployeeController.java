@@ -35,14 +35,19 @@ public class EmployeeController {
         }
     }
 
+    // READ: Get an employee by ID
     @GetMapping("/{id}")
     public ResponseEntity<Object> getEmployee(@PathVariable Long id) {
         Locale locale = LocaleContextHolder.getLocale();
         Optional<Employee> employee = employeeService.findEmployee(id);
-        return employee.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(employeeService.messageSource
-                                .getMessage("employee.not.found", null, locale)));
+
+        // If employee is found, return it; otherwise, return a localized "not found" message
+        if (employee.isPresent()) {
+            return ResponseEntity.ok(employee.get());
+        } else {
+            String errorMessage = employeeService.messageSource.getMessage("employee.not.found", null, locale);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
     }
 
     @PutMapping("/update")
