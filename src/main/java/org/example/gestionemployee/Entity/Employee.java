@@ -13,17 +13,17 @@ public class Employee {
     private Long id;
     private String nom;
     private String prenom;
-    private String Email;
+    private String email;
     private Boolean isworking;
-    private Boolean left;
+    private Boolean hasleft;
 
     public Employee(Long id, String nom, String prenom, String email, Boolean isworking, Boolean left) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.Email = email;
+        this.email = email;
         this.isworking = isworking;
-        this.left = left;
+        this.hasleft = left;
     }
 
     public Employee() {

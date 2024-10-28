@@ -48,7 +48,7 @@ public class EmployeeService {
             existingEmployee.setNom(employee.getNom());
             existingEmployee.setPrenom(employee.getPrenom());
             existingEmployee.setIsworking(employee.getIsworking());
-            existingEmployee.setLeft(employee.getLeft());
+            existingEmployee.setHasleft(employee.getHasleft());
             existingEmployee.setEmail(employee.getEmail());
 
             employeerepo.save(existingEmployee);
